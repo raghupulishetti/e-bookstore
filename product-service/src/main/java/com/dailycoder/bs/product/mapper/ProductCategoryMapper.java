@@ -22,12 +22,20 @@ public class ProductCategoryMapper {
     }
 
     public Page<ProductCategoryVO> fromPagedEntity(Page<ProductCategory> entities) {
-        Page<ProductCategoryVO> dtoPage = entities.map(new Function<ProductCategory, ProductCategoryVO>() {
+        return entities.map(this::fromEntity);
+        /*Page<ProductCategoryVO> dtoPage = entities.map(new Function<ProductCategory, ProductCategoryVO>() {
             @Override
             public ProductCategoryVO apply(ProductCategory entity) {
                 return fromEntity(entity);
             }
         });
-        return dtoPage;
+        return dtoPage;*/
+    }
+
+    public ProductCategory toEntity(ProductCategoryVO productCategoryVO){
+        return ProductCategory.builder()
+                .productCategoryName(productCategoryVO.getProductCategoryName())
+                .description(productCategoryVO.getDescription())
+                .build();
     }
 }

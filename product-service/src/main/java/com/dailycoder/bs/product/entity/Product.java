@@ -51,9 +51,7 @@ public class Product extends DateAudit {
     @Column(name = "AVAILABLE_ITEM_COUNT")
     private int availableItemCount;
 
-    public String getProductCategory() {
-        return productCategory.getProductCategoryName();
-    }
+
 
 
 }
