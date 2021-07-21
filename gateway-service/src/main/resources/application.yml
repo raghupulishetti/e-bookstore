@@ -1,0 +1,26 @@
+server:
+  port: 8765
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: GATEWAY-SERVICE
+
+  profiles:
+    active: local
+
+
+
+  zuul:
+    host:
+      socket-timeout-millis: 30000
+      connect-timeout-millis: 30000
+
+    routes:
+      productservice:
+        path: /productservice/**
+        serviceId: PRODUCT-SERVICE
