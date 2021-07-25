@@ -1,0 +1,52 @@
+version: "3.4"
+
+services:
+  discovery-service:
+    build:
+      context: ./discovery-service
+      args:
+        JAR_FILE: discovery-service-0.0.1-SNAPSHOT.jar
+    container_name: discovery-service
+    image: discovery-service
+    hostname: discovery-service
+    ports:
+      - 8761:8761
+    networks:
+      - ebookstore-network
+
+  gateway-service:
+    build:
+      context: ./gateway-service
+      args:
+        JAR_FILE: gateway-service-0.0.1-SNAPSHOT.jar
+    container_name: gateway-service
+    image: gateway-service
+    hostname: gateway-service
+    ports:
+      - 8765:8765
+    networks:
+      - ebookstore-network
+    depends_on:
+      - discovery-service
+
+
+  product-service:
+    build:
+      context: ./product-service
+      args:
+        JAR_FILE: product-service-0.0.1-SNAPSHOT.jar
+    container_name: product-service
+    image: product-service
+    hostname: product-service
+    ports:
+      - 9001:9001
+    #extra_hosts:
+     # - "localhost:127.0.0.1"
+    networks:
+      - ebookstore-network
+    depends_on:
+      - discovery-service
+
+networks:
+  ebookstore-network:
+    driver: bridge
