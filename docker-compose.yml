@@ -1,6 +1,29 @@
 version: "3.4"
 
 services:
+
+
+  # Database
+  # ebookstore-db:
+  #   image: mysql:5.7
+  #   container_name: ebookstore-db
+  #   hostname: ebookstore-db
+  #   restart: always
+  #   environment:
+  #     MYSQL_USER: 'ebookstore'
+  #     MYSQL_PASSWORD: 'root'
+  #     MYSQL_ROOT_PASSWORD: 'root'
+  #   ports:
+  #     - "3307:3306"
+  #   expose:
+  #     - "3307"
+  #   volumes:
+  #     - bookstore-db-volume:/var/lib/mysql
+  #   networks:
+  #     - ebookstore-network
+
+  # Core services
+
   discovery-service:
     build:
       context: ./discovery-service
@@ -40,13 +63,17 @@ services:
     hostname: product-service
     ports:
       - 9001:9001
-    #extra_hosts:
-     # - "localhost:127.0.0.1"
+    extra_hosts:
+      - "host.docker.internal:192.168.0.195"
     networks:
       - ebookstore-network
     depends_on:
       - discovery-service
 
+#volumes:
+  #bookstore-db-volume:
+
 networks:
   ebookstore-network:
     driver: bridge
+
