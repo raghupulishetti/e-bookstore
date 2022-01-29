@@ -52,6 +52,22 @@ services:
     depends_on:
       - discovery-service
 
+  cloud-config-service:
+    build:
+      context: ./cloud-config-service
+      args:
+        JAR_FILE: cloud-config-service-0.0.1-SNAPSHOT.jar
+    container_name: cloud-config-service
+    image: cloud-config-service
+    hostname: cloud-config-service
+    ports:
+      - 8888:8888
+    networks:
+      - ebookstore-network
+    depends_on:
+      - discovery-service
+
+
 
   product-service:
     build:
@@ -64,7 +80,7 @@ services:
     ports:
       - 9001:9001
     extra_hosts:
-      - "host.docker.internal:192.168.0.195"
+      - "host.docker.internal:192.168.1.38"
     networks:
       - ebookstore-network
     depends_on:
