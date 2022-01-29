@@ -6,7 +6,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://${discovery-service:localhost}:8761/eureka
+      defaultZone: http://${DISCOVERY_SERVICE_URL:localhost}:8761/eureka
 
 spring:
   application:

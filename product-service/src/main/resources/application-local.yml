@@ -4,7 +4,7 @@ spring:
        on-profile: local
    #profiles: local
    datasource:
-     url: jdbc:mysql://host.docker.internal:3306/bs_product_service?autoReconnect=true&userSSL=false&createDatabaseIfNotExist=true
+     url: jdbc:mysql://${DOCKER_HOST_INTERNAL:localhost}:3306/bs_product_service?autoReconnect=true&userSSL=false&createDatabaseIfNotExist=true
      #url: jdbc:mysql://bookstore-db:3307/bs-product-service?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
      username: root
      password: root

@@ -51,22 +51,22 @@ services:
       - ebookstore-network
     depends_on:
       - discovery-service
-
-  cloud-config-service:
-    build:
-      context: ./cloud-config-service
-      args:
-        JAR_FILE: cloud-config-service-0.0.1-SNAPSHOT.jar
-    container_name: cloud-config-service
-    image: cloud-config-service
-    hostname: cloud-config-service
-    ports:
-      - 8888:8888
-    networks:
-      - ebookstore-network
-    depends_on:
-      - discovery-service
-
+#
+#  cloud-config-service:
+#    build:
+#      context: ./cloud-config-service
+#      args:
+#        JAR_FILE: cloud-config-service-0.0.1-SNAPSHOT.jar
+#    container_name: cloud-config-service
+#    image: cloud-config-service
+#    hostname: cloud-config-service
+#    ports:
+#      - 8888:8888
+#    networks:
+#      - ebookstore-network
+#    depends_on:
+#      - discovery-service
+#
 
 
   product-service:
@@ -85,6 +85,9 @@ services:
       - ebookstore-network
     depends_on:
       - discovery-service
+    environment:
+      - DISCOVERY_SERVICE_URL:discovery-service
+      - DOCKER_HOST_INTERNAL:host.docker.internal
 
 #volumes:
   #bookstore-db-volume:
