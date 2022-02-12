@@ -55,7 +55,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.dailycoder.bs.commom</groupId>
+            <groupId>com.dailycoder.bs</groupId>
             <artifactId>common-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

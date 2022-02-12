@@ -1,6 +1,6 @@
 package com.dailycoder.bs.product.service.impl;
 
-import com.dailycoder.bs.commom.util.PagingUtil;
+import com.dailycoder.bs.common.util.PagingUtil;
 import com.dailycoder.bs.product.entity.Product;
 import com.dailycoder.bs.product.entity.ProductCategory;
 import com.dailycoder.bs.product.mapper.ProductMapper;

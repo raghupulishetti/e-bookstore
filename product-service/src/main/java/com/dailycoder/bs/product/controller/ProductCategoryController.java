@@ -1,6 +1,6 @@
 package com.dailycoder.bs.product.controller;
 
-import com.dailycoder.bs.commom.http.header.HeaderGenerator;
+import com.dailycoder.bs.common.http.header.HeaderGenerator;
 import com.dailycoder.bs.product.service.ProductCategoryService;
 import com.dailycoder.bs.product.vo.ProductCategoryVO;
 import org.springframework.beans.factory.annotation.Autowired;

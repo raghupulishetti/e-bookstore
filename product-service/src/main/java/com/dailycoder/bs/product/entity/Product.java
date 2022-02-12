@@ -1,6 +1,6 @@
 package com.dailycoder.bs.product.entity;
 
-import com.dailycoder.bs.commom.entity.DateAudit;
+import com.dailycoder.bs.common.entity.DateAudit;
 import com.dailycoder.bs.product.vo.ProductVO;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

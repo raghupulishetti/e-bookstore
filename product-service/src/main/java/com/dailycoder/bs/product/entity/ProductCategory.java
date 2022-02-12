@@ -1,6 +1,6 @@
 package com.dailycoder.bs.product.entity;
 
-import com.dailycoder.bs.commom.entity.DateAudit;
+import com.dailycoder.bs.common.entity.DateAudit;
 import com.dailycoder.bs.product.vo.ProductCategoryVO;
 import com.dailycoder.bs.product.vo.ProductVO;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -12,14 +12,10 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -39,11 +35,10 @@ public class ProductCategory extends DateAudit {
     @Column(name = "PRODUCT_CATEGORY_NAME", nullable = false)
     private String productCategoryName;
 
-    @OneToMany(
-            mappedBy = "productCategory",
-            cascade = CascadeType.ALL
-    )
-    private List<Product> products;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "productCategory", cascade = CascadeType.ALL)
+    private Set<Product> products = new HashSet<>(0);
+
     private String description;
 
 

@@ -1,6 +1,6 @@
 package com.dailycoder.bs.product.controller;
 
-import com.dailycoder.bs.commom.exception.GenericException;
+import com.dailycoder.bs.common.exception.GenericException;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

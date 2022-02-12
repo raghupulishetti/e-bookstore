@@ -1,0 +1,20 @@
+spring:
+   config:
+     activate:
+       on-profile: local
+   #profiles: local
+   datasource:
+     url: jdbc:mysql://${host.docker.internal:localhost}:3306/bs_user_service?autoReconnect=true&userSSL=false&createDatabaseIfNotExist=true
+     #url: jdbc:mysql://bookstore-db:3307/bs-product-service?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+     username: root
+     password: root
+     driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+   jpa:
+     hibernate:
+       ddl-auto: update
+
+     properties:
+       hibernate:
+         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
